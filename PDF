@@ -1,0 +1,37 @@
+import React,{useEffect, useRef} from "react";
+import { useReactToPrint } from "react-to-print";
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+
+
+
+export default function Rio () {
+
+
+      // useEffect(()=>[
+      //   getdata()
+      // ],[])
+
+      // const getdata =async()=>{
+      //   const re = await axios.get('http://spyss.dollopinfotech.com/getValayaListApi?page=-1&size=10')
+      //   console.log(re)
+      // }
+
+    const componentRef = useRef();
+    const handlprint = useReactToPrint({
+        content:()=>componentRef.current,
+        documentTitle:'emp-data',
+       
+    })
+    return(
+        <>
+        {/* <ToastContainer /> */}
+            <div ref={componentRef} style={{width:'100%',height:window.innerHeight}}>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi repellendus, quo nam necessitatibus nisi laudantium, animi iusto minus, et similique a distinctio debitis perspiciatis facilis consequuntur accusamus ex unde amet.</p>
+            <img src="https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg" alt="" srcset="" />
+            </div>
+            <button onClick={handlprint} className='btn btn-info'> PDF</button>
+        </>
+    )
+}
